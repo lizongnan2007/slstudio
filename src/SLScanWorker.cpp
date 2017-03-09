@@ -265,7 +265,10 @@ void SLScanWorker::doWork(){
         cv::calcHist(frameSeqArr, 3, channels, cv::Mat(), histogram, 1, &histSize, &histRange);
         //emit hist("Histogram", histogram, 100, 50);
         cv::Mat histogramImage = cvtools::histimage(histogram);
-        emit showHistogram(histogramImage);
+        emit showHistogram(frameSeq[0]);
+
+        //绘制采样曲线
+        //QwtPlotCurve *curve;
 
         // Increase iteration counter
         k += 1;

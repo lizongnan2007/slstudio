@@ -43,10 +43,17 @@ unix:!macx {
     CONFIG += link_pkgconfig
     PKGCONFIG += opencv
     #LIBS += -lopencv_core -lGLU
-    exists(/usr/include/dc1394/dc1394.h){
-        DEFINES += WITH_CAMERAIIDC
-        LIBS += -ldc1394
+    #exists(/usr/include/dc1394/dc1394.h){
+    #    DEFINES += WITH_CAMERAIIDC_DISABLE
+    #    LIBS += -ldc1394
+   # }
+############
+    exists(/usr/include/flycapture/FlyCapture2.h){
+        INCLUDEPATH += /usr/include/flycapture
+        DEFINES += WITH_CAMERAPOINTGREY
+        LIBS += -lflycapture
     }
+############
     exists(/usr/include/ueye.h){
         DEFINES += WITH_CAMERAIDSIMAGING
         LIBS += -lueye_api
@@ -74,10 +81,10 @@ macx {
 
 # Compile with specific camera driver support
 # libdc1394
-contains(DEFINES, WITH_CAMERAIIDC) {
-    HEADERS += CameraIIDC.h
-    SOURCES +=CameraIIDC.cpp
-}
+#contains(DEFINES, WITH_CAMERAIIDC) {
+    #HEADERS += CameraIIDC.h
+    #SOURCES +=CameraIIDC.cpp
+#}
 # libueye
 contains(DEFINES, WITH_CAMERAIDSIMAGING) {
     HEADERS += CameraIDSImaging.h
@@ -87,4 +94,9 @@ contains(DEFINES, WITH_CAMERAIDSIMAGING) {
 contains(DEFINES, WITH_CAMERAXIMEA) {
     HEADERS += CameraXIMEA.h
     SOURCES += CameraXIMEA.cpp
+}
+# lflycapture
+contains(DEFINES, WITH_CAMERAPOINTGREY) {
+    HEADERS += CameraPointGrey.h
+    SOURCES += CameraPointGrey.cpp
 }

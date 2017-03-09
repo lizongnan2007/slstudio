@@ -17,10 +17,10 @@
 std::vector< std::vector<CameraInfo> > Camera::GetInterfaceCameraList(){
     std::vector< std::vector<CameraInfo> > ret;
 
-#ifdef WITH_CAMERAIIDC
-    std::vector<CameraInfo> iidccameras = CameraIIDC::getCameraList();
-    ret.push_back(iidccameras);
-#endif
+//#ifdef WITH_CAMERAIIDC
+//    std::vector<CameraInfo> iidccameras = CameraIIDC::getCameraList();
+//    ret.push_back(iidccameras);
+//#endif
 #ifdef WITH_CAMERAXIMEA
     std::vector<CameraInfo> ximeacameras = CameraXIMEA::getCameraList();
     ret.push_back(ximeacameras);

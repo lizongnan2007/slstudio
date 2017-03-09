@@ -289,10 +289,10 @@ macx{
 
 # Compile with specific camera driver bindings
 # libdc1394
-unix:!macx:exists(/usr/include/dc1394/dc1394.h) {
-    DEFINES += WITH_CAMERAIIDC
-    LIBS += -ldc1394
-}
+#unix:!macx:exists(/usr/include/dc1394/dc1394.h) {
+#    DEFINES += WITH_CAMERAIIDC
+#    LIBS += -ldc1394
+#}
 macx:exists(/usr/local/include/dc1394/dc1394.h) {
     DEFINES += WITH_CAMERAIIDC
     LIBS += -ldc1394

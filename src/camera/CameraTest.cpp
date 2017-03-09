@@ -21,7 +21,7 @@ CameraTest::CameraTest(QWidget *parent) : QDialog(parent), ui(new Ui::CameraTest
     connect(cameraWorker, SIGNAL(newFrame(cv::Mat)), ui->widget, SLOT(showFrameCV(cv::Mat)));
 
     // Setup camera worker for interface X camera Y
-    QMetaObject::invokeMethod(cameraWorker, "setup", Q_ARG(unsigned, 1), Q_ARG(unsigned, 0));
+    QMetaObject::invokeMethod(cameraWorker, "setup", Q_ARG(unsigned, 0), Q_ARG(unsigned, 0));
     // Start capturing
     QMetaObject::invokeMethod(cameraWorker, "doWork");
 
